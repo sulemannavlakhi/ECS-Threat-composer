@@ -1,1 +1,0 @@
-# ECS-threat-composer
