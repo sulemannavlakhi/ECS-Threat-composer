@@ -1,5 +1,3 @@
-#creating alb 
-
 resource "aws_lb" "alb" {
   name               = "alb"
   internal           = false
@@ -7,8 +5,6 @@ resource "aws_lb" "alb" {
   security_groups    = [aws_security_group.sg1.id]
   subnets           = [var.subnetpublic1_id, var.subnetpublic2_id]
 }
-
-#creating listener for http and https
 
 resource "aws_lb_listener" "alb_listener_http" {
   load_balancer_arn = aws_lb.alb.arn
@@ -37,9 +33,6 @@ resource "aws_lb_listener" "alb_listener_https" {
     type             = "forward"
   }
 }
-
-
-#creating security group for alb
 
 resource "aws_security_group" "sg1" {
   name = "sg1"
@@ -74,7 +67,6 @@ resource "aws_security_group" "sg1" {
     cidr_blocks      = [var.egress_cidr]
   }
 }
-#creating target group for alb
 
 resource "aws_lb_target_group" "alb-tg" {
   name     = "alb-tg"

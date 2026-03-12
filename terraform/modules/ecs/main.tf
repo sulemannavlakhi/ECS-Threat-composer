@@ -1,5 +1,3 @@
-#creating ECS cluster and iam role
-
 resource "aws_ecs_cluster" "ecs-threat" {
   name = "ecs-threat"
 }
@@ -7,8 +5,6 @@ resource "aws_ecs_cluster" "ecs-threat" {
 data "aws_iam_role" "ecs_task_iam_role" {
   name = "ecsTaskExecutionRole"
 }
-
-#creating task definition 
 
 resource "aws_ecs_task_definition" "ecs-docker" {
   family                   = "ecs-docker"
@@ -37,8 +33,6 @@ resource "aws_ecs_task_definition" "ecs-docker" {
   }
 }
 
-#creating an ECS service
-
 resource "aws_ecs_service" "ecs-project" {
   name            = "ecs-project"
   cluster         = aws_ecs_cluster.ecs-threat.id
@@ -57,8 +51,6 @@ resource "aws_ecs_service" "ecs-project" {
    security_groups = [aws_security_group.sg2.id]
  }
 }
-
-#creating security group for the ecs task
  
 resource "aws_security_group" "sg2" {
   name = "sg2"
@@ -84,7 +76,6 @@ resource "aws_security_group" "sg2" {
     protocol         = "TCP"
     cidr_blocks      = [var.ingress_cidr]
   }  
-
 
   egress {
     from_port        = 0
