@@ -22,3 +22,13 @@ variable "cert_arn" {
   type        = string
   description = "certificate arn from route53 module"
 }
+
+variable "ingress_cidr" {
+  type        = string
+  description = "ingress cidr"
+}
+
+variable "egress_cidr" {
+  type        = string
+  description = "egress cidr"
+}
