@@ -3,9 +3,7 @@ module "vpc" {
 
   vpc_cidr                               = var.vpc_cidr
   routetable_cidr                        = var.routetable_cidr
-  az_1a                                  = var.az_1a
-  az_2a                                  = var.az_2a
-  public_subnet_1                        = var.public_subnet_1
+  public_subnet_1                        = var.public_subnet_1 
   public_subnet_2                        = var.public_subnet_2
   public_subnet_map_public_ip_on_launch  = var.public_subnet_map_public_ip_on_launch
   private_subnet_1                       = var.private_subnet_1
@@ -17,8 +15,8 @@ module "ecs" {
   source = "./modules/ecs"
 
   vpc_id             = module.vpc.vpc_id
-  subnetprivate1_id  = module.vpc.private_subnet_1_id
-  subnetprivate2_id  = module.vpc.private_subnet_2_id
+  subnet_private1_id  = module.vpc.private_subnet_1_id
+  subnet_private2_id  = module.vpc.private_subnet_2_id
   tg_arn             = module.alb.target_group_arn
 
   application_port   = var.application_port
@@ -28,4 +26,19 @@ module "ecs" {
   ecs_cpu            = var.ecs_cpu
   ecs_desired_count  = var.ecs_desired_count
   ecs_image          = var.ecs_image
+  ingress_cidr       = var.ingress_cidr
+  egress_cidr        = var.egress_cidr
+}
+
+
+module "alb" {
+  source = "./modules/alb"
+
+  vpc_id            = module.vpc.vpc_id
+  subnetpublic1_id  = module.vpc.public_subnet_1_id
+  subnetpublic2_id  = module.vpc.public_subnet_2_id
+  application_port  = var.application_port
+  cert_arn          = var.cert_arn
+  ingress_cidr      = var.ingress_cidr
+  egress_cidr       = var.egress_cidr
 }
