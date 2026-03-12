@@ -1,4 +1,3 @@
-
 resource "aws_s3_bucket" "ecs_s3" {
   bucket = "ECS-S3"
 }

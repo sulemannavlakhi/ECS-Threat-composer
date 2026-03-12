@@ -1,5 +1,3 @@
-## VARIABLIZE THIS NO HARDCODE
-
 #creating alb 
 
 resource "aws_lb" "alb" {
