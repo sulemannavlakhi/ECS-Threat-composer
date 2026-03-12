@@ -47,7 +47,7 @@ resource "aws_ecs_service" "ecs-project" {
   }
 
   network_configuration {
-   subnets         = [var.subnetprivate1_id, var.subnetprivate2_id]
+   subnets         = [var.subnet_private1_id, var.subnet_private2_id]
    security_groups = [aws_security_group.sg2.id]
  }
 }

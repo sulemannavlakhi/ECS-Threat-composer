@@ -24,12 +24,12 @@ variable "ecs_memory" {
 }
 
 
-variable "subnetprivate1_id" {
+variable "subnet_private1_id" {
   type        = string
   description = "private1 subnet id from the vpc module"
 }
 
-variable "subnetprivate2_id" {
+variable "subnet_private2_id" {
   type        = string
   description = "private2 subnet id from the vpc module"
 }
