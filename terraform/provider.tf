@@ -7,14 +7,14 @@ terraform {
   }
 
   backend "s3" {
-    bucket         = "suly-S3"           
+    bucket         = "ECS-S3"           
     key            = "terraform.tfstate" 
-    region         = "us-east-1"
+    region         = "ca-central-1"
     use_lockfile   = true   
     encrypt        = true
   }
 }
 
 provider "aws" {
-  region = "us-east-1"
+  region = "ca-central-1"
 }
