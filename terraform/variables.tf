@@ -51,11 +51,6 @@ variable "ecs_container_name" {
   description = "name of the container in the task definition"
 }
 
-variable "tg_arn" {
-  type        = string
-  description = "target group arn from the alb module"
-}
-
 variable "ecs_docker_port" {
   type        = number
   description = "port the docker image uses"
@@ -64,21 +59,6 @@ variable "ecs_docker_port" {
 variable "ecs_memory" {
   type        = number
   description = "memory value for the task definition"
-}
-
-variable "vpc_id" {
-  type        = string
-  description = "vpc id from the vpc module"
-}
-
-variable "subnetprivate1_id" {
-  type        = string
-  description = "private1 subnet id from the vpc module"
-}
-
-variable "subnetprivate2_id" {
-  type        = string
-  description = "private2 subnet id from the vpc module"
 }
 
 variable "ecs_image" {
@@ -104,4 +84,14 @@ variable "ingress_cidr" {
 variable "egress_cidr" {
   type        = string
   description = "egress cidr"
+}
+
+variable "domain_name" {
+  type        = string
+  description = "domain name variable"
+}
+
+variable "private_zone" {
+  type        = bool
+  description = "variable for private zone"
 }
