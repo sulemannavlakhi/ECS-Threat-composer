@@ -6,7 +6,7 @@ resource "aws_internet_gateway" "igw" {
   vpc_id = aws_vpc.main.id
 }
 
-data "aws_availability_zones" "az" {
+data "aws_availability_zones" "available" {
   state = "available"
 }
 
@@ -22,7 +22,7 @@ resource "aws_route_table" "routetable_igw" {
 resource "aws_subnet" "public_subnet1" {
   vpc_id     = aws_vpc.main.id
   cidr_block = var.public_subnet_1
-  availability_zone = data.aws_availability_zones.az.names[0]
+  availability_zone = data.aws_availability_zones.available.names[0]
   map_public_ip_on_launch = var.public_subnet_map_public_ip_on_launch
 }
 
@@ -54,7 +54,7 @@ resource "aws_eip" "nat_eip2" {
 resource "aws_subnet" "private_subnet1" {
   vpc_id     = aws_vpc.main.id
   cidr_block = var.private_subnet_1
-  availability_zone = data.aws_availability_zones.az.names[0]
+  availability_zone = data.aws_availability_zones.available.names[0]
   map_public_ip_on_launch = var.private_subnet_map_public_ip_on_launch
 }
 

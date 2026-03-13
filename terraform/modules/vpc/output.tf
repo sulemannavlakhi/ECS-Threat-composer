@@ -15,5 +15,5 @@ output "private_subnet2_id" {
 }
 
 output "vpc_id" {
-    value = [aws_subnet.public_subnet2.id, aws_subnet.public_subnet1.id]
+    value = aws_vpc.main.id
 }
