@@ -33,7 +33,7 @@ jobs:
           REPOSITORY: ${{ secrets.ECR_REPO }}
           IMAGE_TAG: ${{ github.sha }}
         run: |
-          docker build -t $REGISTRY/$REPOSITORY:$IMAGE_TAG -f ./app/Dockerfile /app
+          docker build -t $REGISTRY/$REPOSITORY:$IMAGE_TAG -f ./app/Dockerfile ./app
           docker push $REGISTRY/$REPOSITORY:$IMAGE_TAG 
 
           
