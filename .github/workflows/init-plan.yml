@@ -35,7 +35,7 @@ jobs:
         uses: hashicorp/setup-terraform@v4
 
       - name: terraform init
-        run: terraform terraform init
+        run: terraform init
 
       - name: Setup TFLint
         uses: terraform-linters/setup-tflint@v6
@@ -55,7 +55,7 @@ jobs:
         run: tflint -f compact
 
       - name: Terraform Validate
-        run: terraform terraform validate
+        run: terraform validate
 
       - name: Terraform Plan
-        run: terraform terraform plan
+        run: terraform plan
