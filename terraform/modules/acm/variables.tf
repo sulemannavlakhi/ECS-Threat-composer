@@ -7,3 +7,8 @@ variable "private_zone" {
   type        = bool
   description = "variable for private zone"
 }
+
+variable "hosted_zone" {
+  type        = string
+  description = "hosted zone domain name"
+}
