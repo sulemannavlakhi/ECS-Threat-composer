@@ -7,11 +7,12 @@ terraform {
   }
 }
 
- # backend "s3" {
-   # bucket         = "ECS-S3"           
-    #key            = "terraform.tfstate" 
-    #region         = "ca-central-1"
-    #use_lockfile   = true   
-    #encrypt        = true
-  #}
-#}
+terraform {
+  backend "s3" {
+    bucket       = "sulemans3"
+    key          = "terraform.tfstate"
+    region       = "ca-central-1"
+    use_lockfile = true
+    encrypt      = true
+  }
+}
