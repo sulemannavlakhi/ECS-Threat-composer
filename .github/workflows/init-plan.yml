@@ -59,7 +59,7 @@ jobs:
         working-directory: terraform
         run: terraform validate
 
-      - name: Create tfvars file
+      - name: Creating tfvars file
         working-directory: terraform
         env:
          TF_VARS_CONTENT: ${{ secrets.TF_VARS }}
