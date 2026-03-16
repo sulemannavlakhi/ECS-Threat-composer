@@ -60,6 +60,7 @@ jobs:
         run: terraform validate
 
       - name: Create tfvars file
+        working-directory: terraform
         run: echo "${{ secrets.TF_VARS }}" > terraform.tfvars
 
       - name: Terraform Plan
