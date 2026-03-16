@@ -6,7 +6,7 @@ on:
 
 
 jobs:
-  init-and-plan:
+  init-plan-apply:
     runs-on: ubuntu-latest
 
     permissions:
