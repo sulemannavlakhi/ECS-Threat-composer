@@ -65,10 +65,8 @@ jobs:
          TF_VARS_CONTENT: ${{ secrets.TF_VARS }}
         run: echo "$TF_VARS_CONTENT" > terraform.tfvars
 
-      - name: Terraform Plan
+      - name: Terraform Plan and Apply
         working-directory: terraform
-        run: terraform plan -var-file="terraform.tfvars"
-
-      - name: Terraform Apply
-        working-directory: terraform
-        run: terraform apply -auto-approve -var-file="terraform.tfvars"
+        run: |
+         terraform plan -var-file="terraform.tfvars" -out=tfplan
+         terraform apply -auto-approve tfplan
