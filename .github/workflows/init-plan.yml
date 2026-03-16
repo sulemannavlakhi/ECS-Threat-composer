@@ -61,7 +61,9 @@ jobs:
 
       - name: Create tfvars file
         working-directory: terraform
-        run: echo "${{ secrets.TF_VARS }}" > terraform.tfvars
+        env:
+         TF_VARS_CONTENT: ${{ secrets.TF_VARS }}
+        run: echo "$TF_VARS_CONTENT" > terraform.tfvars
 
       - name: Terraform Plan
         working-directory: terraform
