@@ -1,4 +1,4 @@
-name: Terraform Initialize and Plan
+name: Terraform Init and Plan
 
 on:
   push:
