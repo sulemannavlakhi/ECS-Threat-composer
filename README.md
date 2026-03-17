@@ -48,3 +48,54 @@ This project deploys a Threat Composer application onto AWS ECS Fargate using Te
 ├── .gitignore
 └── README.md
 ```
+
+## Prerequisites
+
+* AWS account and 2FA enabled
+* AWS CLI installed and connected to account
+* Docker installed on local machine
+* Terraform installed on local machine
+* Domain name from AWS Route53 to host the app (preferably your name)
+* GitHub actions OIDC token configured
+
+# Setting App Up Locally
+```
+yarn install
+yarn build
+yarn global add serve
+serve -s build
+```
+
+Then visit: http://localhost:3000
+
+## Key Details
+
+### Docker
+
+Docker is used to containerize the Node.js application using a multi-stage build process. 
+The multi-stage build reduces the final image size to decrease deployment time. A non-root 
+user is configured for security to prevent unauthorized access and protect the file system.
+
+### Terraform
+
+Terraform is used to create the infrastructure on Amazon Web Services where the application 
+will run, ensuring reusability, scalability and security. Some features include:
+
+* Virtual Private Cloud with 2 Availability Zones and 2 public/private subnets to ensure 
+  high availability and security.
+* Application Load Balancer with security groups to verify incoming traffic and a target 
+  group to direct traffic to healthy instances.
+* Route 53 DNS to make the app accessible to the public with ACM included to secure the 
+  site with HTTPS.
+* Elastic Container Registry to store and manage the application image on AWS.
+* Elastic Container Service running on Fargate to host and run the containerized application 
+  serverlessly, removing the need to manage underlying infrastructure.
+* S3 Bucket and DynamoDB for remote state storage and state locking, protecting against 
+  multiple changes being made simultaneously.
+
+### GitHub Actions
+
+GitHub Actions is used to automate continuous integration and continuous deployment of our 
+application. GitHub Actions utilizes Checkov to scan for any vulnerabilities in our 
+infrastructure and TFLint to check for any errors in the Terraform code.
+
