@@ -1,4 +1,4 @@
-# AWS ECS THREAT COMPOSER APP
+# Deploying AWS Threat Composer Application
 
 ## Introduction
 
@@ -9,7 +9,7 @@ This project deploys a Threat Composer application onto AWS ECS Fargate using Te
 ![AWS Architecture](images/AWS-Architecture.png)
 
 ## Project Structure 
-
+```
 ├── .github/
 │   └── workflows/
 │       ├── build-push.yml
@@ -47,4 +47,4 @@ This project deploys a Threat Composer application onto AWS ECS Fargate using Te
 │   └── variables.tf
 ├── .gitignore
 └── README.md
-
+```
