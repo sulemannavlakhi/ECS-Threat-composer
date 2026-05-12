@@ -32,6 +32,7 @@ resource "aws_dynamodb_table" "terraform_lock" {
 
 resource "aws_ecr_repository" "ecs_app" {
   name                 = "threat-composer"
+  force_delete         = true
   image_tag_mutability = "MUTABLE"
 
   image_scanning_configuration {
